@@ -1,0 +1,67 @@
+/*this is the tip arrow bracket*/
+@mixin tooltip-base {
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  width: 120px;
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  transition: visibility 0s linear 400ms, opacity 300ms;
+  margin-left: -60px;
+  font-weight: bold;
+}
+
+@mixin tooltip-arrow-base {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  margin-left: -5px;
+  border-width: 5px;
+}
+
+#tooltip-parent {
+  position: relative;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 5px;
+
+  .tooltip-top {
+    @include tooltip-base;
+    bottom: 150%;
+    left: 50%;
+
+    &:after {
+      @include tooltip-arrow-base;
+      top: 100%;
+      left: 25%;
+      border-color: #222 transparent transparent transparent;
+    }
+  }
+
+  &:hover .tooltip-top {
+    opacity: 1;
+    transition: visibility 0s linear 400ms, opacity 300ms;
+  }
+
+  .tooltip-bottom {
+    @include tooltip-base;
+    top: 150%;
+    left: 50%;
+
+    &:after {
+      @include tooltip-arrow-base;
+      bottom: 100%;
+      right: 25%;
+      border-color: transparent transparent #222 transparent;
+    }
+  }
+
+  &:hover .tooltip-bottom {
+    opacity: 1;
+    transition: visibility 0s linear 400ms, opacity 300ms;
+  }
+
+}
